@@ -1,0 +1,17 @@
+# requirements.txt
+
+# Specify Python version if needed
+python_version >= "3.x"
+
+# PyTorch and torchvision
+torch>=1.0.0
+torchvision>=0.3.0
+
+# OpenCV
+opencv-python>=4.5.1
+
+# Numpy
+numpy>=1.21.0
+
+# Matplotlib
+matplotlib>=3.4.0
