@@ -24,30 +24,31 @@ This repository contains an implementation of Faster R-CNN from scratch for the 
 You can install the required packages using pip:
 
 
-## Result and metric
-### Result
-result
+## Result 
+
+Result
 ![result1](output/results/1.png)
 ![result2](output/results/3.png)
 ![result3](output/results/6.png)
 ![result4](output/results/concat_1.png)
+
 PRECISION RECALL CURVE
-CAR
 ![result5](output/results/PR curve _ car.png)
-MOTORBIKE
 ![result6](output/results/PR curve _ motorbike.png)
 
 
 ## Evaluation Results
 
+### Metric 
+
 | Metric         | Value |
 |----------------|-------|
 | mAP @ 0.5      | 0.53  |
-| mAP @ 0.5:0.95 | 0.68  |
-| AP (Car) @ 0.5 | 0.80  |
-| AP (Motorbike) @ 0.5 | 0.70  |
+| mAP @ 0.5:0.95 | 0.3   |
+| AP (Car) @ 0.5 | 0.69  |
+| AP (Motorbike) @ 0.5 | 0.37  |
 
-### Metric 
+
 
 # Project Structure
 
@@ -76,8 +77,13 @@ The project structure is as follows:
     │ 
     ├── requirements.txt
     └── README.md
-```bash
-pip install -r requirements.txt
+
+# Checkpoints
+you can download the model from:
+
+[**Download**](https://drive.google.com/file/d/1LwmhWWgi7xdaZdveMCmsP6rC-reFGTyM/view?usp=sharing)
+
+
 
 
 
