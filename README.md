@@ -49,11 +49,12 @@ MOTORBIKE
 
 ### Metric 
 
-```bash
-pip install -r requirements.txt
+# Project Structure
 
+The project structure is as follows:
 
-Object_detection/
+ 
+    Object_detection/
     ├── dataset/
     │   ├── dataset_folder/
     │           ├── train
@@ -75,6 +76,10 @@ Object_detection/
     │ 
     ├── requirements.txt
     └── README.md
+```bash
+pip install -r requirements.txt
+
+
 
 
 
