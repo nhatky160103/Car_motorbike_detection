@@ -30,7 +30,7 @@ def train(args):
     if device.type == 'cuda':
         torch.cuda.manual_seed_all(seed)
 
-    list_folder = [os.path.join('dataset', folder) for folder in os.listdir('dataset')]
+    list_folder = [os.path.join('../dataset', folder) for folder in os.listdir('../dataset')]
     dataloader_dict = load_data(list_folder)
 
     model = FasterRCNN(model_config, dataset_config['num_classes']).to(device)

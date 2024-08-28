@@ -112,7 +112,8 @@ def infer(config, list_folder, model_path, num_sample):
         gt_im_list.append(gt_im)
         im_pred_list.append(im_pred)
 
-    save_images(gt_im_list, im_pred_list, save_dir="test_result")
+    # save_images(gt_im_list, im_pred_list, save_dir="test_result")
+    display_images(gt_im_list, im_pred_list)
 
 
 def infer_single_image(folder_path, model_path, config):
@@ -120,7 +121,8 @@ def infer_single_image(folder_path, model_path, config):
     pred_im_list = []
 
     for image_name in os.listdir(folder_path):
-
+        if image_name == "_annotations.coco.json":
+            continue
         image_path= os.path.join(folder_path, image_name)
         dataset_config = config['dataset_params']
         model_config = config['model_params']
@@ -157,7 +159,8 @@ def infer_single_image(folder_path, model_path, config):
 
         or_im_list.append(origin_image)
         pred_im_list.append(im_pred)
-    save_images(or_im_list, pred_im_list, save_dir="test_result")
+    # save_images(or_im_list, pred_im_list, save_dir="test_result")
+    display_images(or_im_list, pred_im_list)
 
 if __name__== "__main__":
 
@@ -170,8 +173,8 @@ if __name__== "__main__":
 
     model_path = config['model_params']['model_path']
 
-    # test_folder = "test_dataset"
-    # infer_single_image(test_folder, model_path, config)
+    test_folder = "../dataset/cctv_car_bike_detection.v6i.coco/test"
+    infer_single_image(test_folder, model_path, config)
 
-    list_folder = [os.path.join('dataset',folder) for folder in os.listdir('dataset')]
-    infer(config,list_folder, model_path, 30 )
+    # list_folder = [os.path.join('../dataset',folder) for folder in os.listdir('../dataset')]
+    # infer(config,list_folder, model_path, 10 )

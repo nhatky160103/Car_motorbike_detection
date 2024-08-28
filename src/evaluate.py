@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 from infer import load_model_and_dataset
 import yaml
 from tqdm import tqdm
+import os
+
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def get_iou(det, gt):
     r"""
@@ -105,15 +109,15 @@ def compute_map(det_boxes, gt_boxes, iou_threshold, method='interp'):
             all_aps[label] = np.nan
 
         # Plot Precision-Recall Curve for this class
-        # plt.figure(figsize=(8, 6))
-        # plt.plot(recalls[label], precisions[label], linestyle='-', linewidth=0.5,
-        #          label=f'Class {label}')
-        # plt.xlabel('Recall')
-        # plt.ylabel('Precision')
-        # plt.title(f'Precision-Recall Curve for Class {label}')
-        # plt.legend()
-        # plt.grid(True)
-        # plt.show()
+        plt.figure(figsize=(8, 6))
+        plt.plot(recalls[label], precisions[label], linestyle='-', linewidth=0.5,
+                 label=f'Class {label}')
+        plt.xlabel('Recall')
+        plt.ylabel('Precision')
+        plt.title(f'Precision-Recall Curve for Class {label}')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
 
     mean_ap = sum(aps) / (len(aps) + 1E-6)
     return mean_ap, all_aps
@@ -190,6 +194,7 @@ def evaluate_map(test_dataloader, faster_rcnn_model, device):
             mean_ap, all_aps = compute_map(all_preds, all_gts, i, method='interp')
             map_per_threshold.append(mean_ap)
             ap_per_threshold.append(all_aps)
+            break
         print(map_per_threshold)
         print(ap_per_threshold)
 
@@ -203,7 +208,7 @@ if __name__ == "__main__":
             config = yaml.safe_load(file)
         except yaml.YAMLError as exc:
             print(exc)
-    print(config)
+
 
     dataset_config = config['dataset_params']
     model_config = config['model_params']
@@ -211,10 +216,9 @@ if __name__ == "__main__":
 
 
     model_path = model_config['model_path']
-    list_folder = ["dataset/cctv_car_bike_detection.v6i.coco", "dataset/Vietnamese vehicle.v3-2023-02-01-5-31pm.coco"]
+    list_folder = [os.path.join('../dataset', folder) for folder in os.listdir('../dataset')]
 
     faster_rcnn_model, test_dataset, test_dataloader = load_model_and_dataset(config, list_folder, model_path, "test")
     faster_rcnn_model.roi_head.low_score_threshold = 0.7
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     evaluate_map(test_dataloader, faster_rcnn_model, device)

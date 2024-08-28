@@ -2,7 +2,9 @@
 
 ## Introduction
 
-This repository contains an implementation of Faster R-CNN from scratch for the task of car and motorbike detection. Faster R-CNN is a state-of-the-art object detection model that improves object detection performance through its Region Proposal Network (RPN) and RoI pooling layers. This implementation aims to train a model to accurately detect and classify cars and motorbikes in images, achieving high performance on the detection task.
+This repository contains an implementation of Faster R-CNN from scratch for the task of car and motorbike detection. 
+Faster R-CNN is a state-of-the-art object detection model that improves object detection performance through its Region Proposal Network (RPN) and RoI pooling layers.
+This implementation aims to train a model to accurately detect and classify cars and motorbikes in images, achieving quite good performance on the detection task.
 
 ## Features
 
@@ -21,8 +23,6 @@ This repository contains an implementation of Faster R-CNN from scratch for the 
 - numpy
 - matplotlib
 
-You can install the required packages using pip:
-
 
 ## Result 
 
@@ -33,24 +33,39 @@ Result
 ![result4](output/results/concat_1.png)
 
 PRECISION RECALL CURVE
-![result5](output/results/PR curve _ car.png)
-![result6](output/results/PR curve _ motorbike.png)
+![result5](output/results/PRcurve_car.png)
+![result6](output/results/PRcurve_motorbike.png)
 
 
 ## Evaluation Results
 
 ### Metric 
 
-| Metric         | Value |
-|----------------|-------|
-| mAP @ 0.5      | 0.53  |
-| mAP @ 0.5:0.95 | 0.3   |
-| AP (Car) @ 0.5 | 0.69  |
-| AP (Motorbike) @ 0.5 | 0.37  |
+| Iou threshold | map  |
+|---------------|------|
+| 0.5           | 0.53 |
+| 0.55          | 0.50 |
+| 0.6           | 0.43 |
+| 0.65          | 0.38 |
+| 0.7           | 0.32 |
+| 0.75          | 0.25 |
+| 0.85          | 0.18 |
+| 0.9           | 0.12 |
 
 
 
-# Project Structure
+Average precision for iou_threshold 0.5
+
+| class     | A Precision |
+|-----------|-------------|
+| car       | 0.69        |
+| motorbike | 0.37        |
+
+
+
+
+
+## Project Structure
 
 The project structure is as follows:
 
@@ -73,18 +88,41 @@ The project structure is as follows:
     │   ├── train.py
     │   ├── evaluate.py
     │   ├── load_data.py
-    │   └──  config.yaml
+    │   └── config.yaml
     │ 
     ├── requirements.txt
     └── README.md
 
-# Checkpoints
-you can download the model from:
+## Checkpoints
+You can download the model from:
 
 [**Download**](https://drive.google.com/file/d/1LwmhWWgi7xdaZdveMCmsP6rC-reFGTyM/view?usp=sharing)
 
 
 
+## Dataset for train
+I utilize several datasets of cars and motorcycles 
+from around the world to train the model.
+You can download these datasets from this link.
+There are a total of five datasets available, 
+each organized with the following directory structure:
+
+    dataset_folder/
+    │      ├── train
+    │      │    ├── list image
+    │      │    ├── annotation_file
+    │      ├── test
+    │      │    ├── list image
+    │      │    ├── annotation_file
+    │      ├── valid
+    │      │    ├── list image
+    │      │    ├── annotation_file
+
+[**Dataset 1**](https://universe.roboflow.com/car-classification/vn_vehicle_2)
+[**Dataset 2**](https://universe.roboflow.com/highway-traffic/road-traffic-4)
+[**Dataset 3**](https://universe.roboflow.com/car-classification/vietnamese-vehicle)
+[**Dataset 4**](https://universe.roboflow.com/fsmvu/street-view-gdogo)
+[**Dataset 5**](https://universe.roboflow.com/project-tdxxb/cctv_car_bike_detection-fhqk8)
 
 
 

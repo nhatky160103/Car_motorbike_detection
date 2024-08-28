@@ -98,7 +98,9 @@ def load_data(list_folder_path):
 
 if __name__ == "__main__":
 
-    list_folder = [os.path.join('dataset',folder) for folder in os.listdir('dataset')]
+    list_folder = [os.path.join('../dataset', folder) for folder in os.listdir('../dataset')]
+    print(list_folder)
     dataloader_dict = load_data(list_folder)
     print(len(dataloader_dict['train']))
     print(len(dataloader_dict['val']))
+

@@ -1,8 +1,8 @@
 dataset_params:
 
-  train_json : dataset/cctv_car_bike_detection.v6i.coco/train/_annotations.coco.json
-  val_json   : dataset/cctv_car_bike_detection.v6i.coco/valid/_annotations.coco.json
-  test_json   : dataset/cctv_car_bike_detection.v6i.coco/test/_annotations.coco.json
+  train_json : ../dataset/cctv_car_bike_detection.v6i.coco/train/_annotations.coco.json
+  val_json   : ../dataset/cctv_car_bike_detection.v6i.coco/valid/_annotations.coco.json
+  test_json   : ../dataset/cctv_car_bike_detection.v6i.coco/test/_annotations.coco.json
   num_classes : 3
 idx2label:
   0: background
@@ -10,7 +10,7 @@ idx2label:
   2: motorbike
 
 model_params:
-  model_path : model/car_motorbike_detection.pth
+  model_path : ../output/checkpoints/car_motorbike_detection.pth
   in_channels : 3
   aspect_ratios: [0.5, 1, 2]
   scales: [128, 256, 512]
@@ -43,5 +43,5 @@ train_params:
   num_epochs: 20
   lr_steps : [12, 16]
   lr: 0.001
-  ckpt_name: 'faster_rcnn_voc2007.pth'
+  ckpt_name: 'car_motorbike_detection.pth'
   batch_size : 1
