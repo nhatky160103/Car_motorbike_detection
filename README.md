@@ -8,7 +8,7 @@ This implementation aims to train a model to accurately detect and classify cars
 
 ## Features
 
-- **Custom Implementation**: A complete implementation of Faster R-CNN, including backbone networks, RPN, RoI pooling, and detection heads.
+- **Custom Implementation**: A complete implementation of Faster R-CNN, including backbone networks, RPN, RoI pooling.
 - **Dataset Support**: Integration with datasets containing car and motorbike images.
 - **Training and Evaluation**: Scripts for training the model and evaluating its performance on validation data, including loss recording, mAP, and AP for each class.
 - **Performance Improvement**: Techniques to enhance model performance, such as data augmentation and hyperparameter tuning.
@@ -16,12 +16,14 @@ This implementation aims to train a model to accurately detect and classify cars
 
 ## Requirements
 
-- Python 3.x
-- PyTorch 1.x or later
+- Python 3.12.3
+- PyTorch 2.1 or later
 - torchvision
 - OpenCV
 - numpy
 - matplotlib
+- cv2
+
 
 
 ## Result 
@@ -109,13 +111,13 @@ each organized with the following directory structure:
 
     dataset_folder/
     │      ├── train
-    │      │    ├── list image
+    │      │    ├── list images
     │      │    ├── annotation_file
     │      ├── test
-    │      │    ├── list image
+    │      │    ├── list images
     │      │    ├── annotation_file
     │      ├── valid
-    │      │    ├── list image
+    │      │    ├── list images
     │      │    ├── annotation_file
 
 [**Dataset 1**](https://universe.roboflow.com/car-classification/vn_vehicle_2)
